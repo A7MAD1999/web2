@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- LANDING -->
+<div class="ll">
+</div>
+<div class="landing">
+    <section class="const">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <img src="../static/slider1.jpg" alt="Slide 1">
+                <img src="../static/slider2.jpg" alt="Slide 2">
+                <img src="../static/slider3.jpg" alt="Slide 3">
+            </div>
+        </div>
+    </section>
+    <div class="it">
+        <video autoplay loop muted plays-incline class="slide" style="filter: blur(5px);"> <source src="../static/gp.mp4" type="video/mp4"></video>
+        <video autoplay loop muted plays-incline class="slide" style="filter: blur(5px);"> <source src="../static/gp.mp4" type="video/mp4"></video>
+        <video autoplay loop muted plays-incline class="slide" style="filter: blur(5px);"> <source src="../static/gp.mp4" type="video/mp4"></video>
+    </div>
+    <div class="intro">
+        <h1>Hello</h1>
+        <p>We Are UNIT, Super Creative & Minimal Agency Web Templete</p>
+    </div>
+</div>
+
+<!-- LANDING -->
+
+
+
+
+
+
+<!-- Projects -->
+
+<h3 class="hea" id="services">Services</h3>
+<section class="primary">
+    <div class="container">
+        <div class="courses-grid">
+            {% for project in projects %}
+                <a class="course-card" href="#{{ project.name | replace(' ', '_') }}">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename=project.icon) }}" alt="img" class="card-img">
+                        <h4 class="card-title">{{ project.name }}</h4>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ENDProjects -->
+
+<!-- Feature -->
+<h2 class="hea" id="features">Features</h2>
+<section class="secondary">
+    <div class="container">
+        <div class="f-grid">
+            {% for feature in features %}
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename=feature.thumbnail) }}" alt="img" class="card-img">
+                <div class="card-lesson">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="#">{{ feature.title }}</a></h5>
+                        <p class="card-text"><a href="#">{{ feature.course }}</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ENDFeature  -->
+
+
+
+<!-- Contact  -->
+        <div class="contact">
+        <div class="container">
+            <h2 class="special-heading" >Contact</h2>
+            <p>Us</p>
+            <div class="content" id="contact"> 
+                <p class="info">Drop us to line</p>
+                <a class="email" href="mailto:@gamil.com?subject=Contact">Name@gmail.com</a>
+                <div class="social">
+                    Find Us On Social Networks
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fas fa-link"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- END Contact -->
+
+{% endblock content %}

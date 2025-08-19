@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ fontawesome_css() }}
+    {% if title %}
+    <title>VAG - {{ title }}</title>
+    {% else %}
+    <title>VAG</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}">
+</head>
+
+<body>
+    <!-- START NAV -->
+    <div class="header">
+        <div class="container">
+            <a  href="{{url_for('home')}}">
+                <img class="logo" src="static/image/logo.jpg" alt="logo">
+            </a>
+            <div class="links">
+                <span class="icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}#services">Services</a></li>
+                        <li><a href="{{ url_for('home') }}#features">Features</a></li>
+                        <li><a href="{{url_for('contact')}}">Contact</a></li>
+                        <li><a href="{{url_for('about')}}">About</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a href="{{url_for('logout')}}">Logout</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </span>
+            </div>
+            <div class="l">    
+                <ul class="rms">
+                    {% if current_user.is_authenticated %}
+                    <li class="navit">
+                        <a href="{{url_for('dashboard')}}">Dashboard</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{url_for('register')}}">Register</a>
+                    </li>
+                    <li class="navit">
+                        <a href="{{url_for('login')}}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- END NAV -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    
+    {% block content %} {% endblock content %}
+    
+    <!-- START About -->
+    <!-- END About -->
+    <!-- START Contact -->
+    <!-- END Contact -->
+    
+    <!-- START FOOTER -->
+    <div class="footer">&copy; 2025 <span>VAG</span> </div>
+    <!-- END FOOTER -->
+    
+</body>
+</html>

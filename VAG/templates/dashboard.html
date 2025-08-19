@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar glass-card">
+        <div class="profile">
+            <img src="{{ image_file }}" alt="user" class="user-img">
+            <h3>{{ current_user.username }}</h3>
+            <p>{{ current_user.email }}</p>
+        </div>
+        <ul class="menu">
+            <li class="active">🏠 Dashboard</li>
+            <li>👤 Profile</li>
+            <li>⚙️ Settings</li>
+            <li>📩 Messages</li>
+            <li>🚪 Logout</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main glass-card">
+        <h2>Profile Overview</h2>
+        <div class="info-grid">
+            <div class="info-box">
+                <h4>First Name</h4>
+                <p>{{ current_user.fname }}</p>
+            </div>
+            <div class="info-box">
+                <h4>Last Name</h4>
+                <p>{{ current_user.lname }}</p>
+            </div>
+            <div class="info-box">
+                <h4>Username</h4>
+                <p>{{ current_user.username }}</p>
+            </div>
+            <div class="info-box">
+                <h4>Email</h4>
+                <p>{{ current_user.email }}</p>
+            </div>
+        </div>
+
+        <h3 class="mt-4">Biography</h3>
+        <p>{{ current_user.bio or "No bio available." }}</p>
+    </main>
+</div>
+
+{% endblock content %}
